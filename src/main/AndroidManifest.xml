@@ -18,7 +18,7 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.codeandmagic.promise.apache">
+          package="org.codeandmagic.promise.volley">
 
     <application
             android:allowBackup="true"

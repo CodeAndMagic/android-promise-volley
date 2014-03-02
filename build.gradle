@@ -19,10 +19,6 @@
 
 apply plugin: 'android-library'
 
-repositories {
-    mavenCentral()
-}
-
 android {
     compileSdkVersion 19
     buildToolsVersion "19.0.1"
@@ -41,5 +37,6 @@ android {
 
 dependencies {
     compile 'com.android.support:support-v4:+'
+    compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     compile project(':core')
 }

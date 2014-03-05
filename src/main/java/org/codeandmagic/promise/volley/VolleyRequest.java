@@ -1,5 +1,7 @@
 package org.codeandmagic.promise.volley;
 
+import android.graphics.Bitmap;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import org.codeandmagic.promise.Promise;
@@ -21,6 +23,13 @@ public class VolleyRequest<R, T> {
     public static class RArray extends VolleyRequest<JsonArrayRequest, JSONArray> {
 
         public RArray(JsonArrayRequest request, Promise<JSONArray> promise) {
+            super(request, promise);
+        }
+    }
+
+    public static class ImgObject extends VolleyRequest<ImageRequest, Bitmap> {
+
+        public ImgObject(ImageRequest request, Promise<Bitmap> promise) {
             super(request, promise);
         }
     }

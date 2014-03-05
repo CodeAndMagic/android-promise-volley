@@ -18,9 +18,9 @@ import org.json.JSONObject;
 /**
  * Created by evelina on 03/03/2014.
  */
-public class VolleyPromise {
+public class VolleyJsonPromise {
 
-    private VolleyPromise() {
+    private VolleyJsonPromise() {
     }
 
     public static Promise<RObject> jsonObjectPromise(int method, String url, JSONObject jsonRequest) {

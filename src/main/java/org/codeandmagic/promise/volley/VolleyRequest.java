@@ -34,19 +34,19 @@ public class VolleyRequest<R, T> {
         }
     }
 
-    private final R request;
-    private final Promise<T> promise;
+    private final R mRequest;
+    private final Promise<T> mPromise;
 
     public VolleyRequest(R request, Promise<T> promise) {
-        this.request = request;
-        this.promise = promise;
+        this.mRequest = request;
+        this.mPromise = promise;
     }
 
     public R getRequest() {
-        return request;
+        return mRequest;
     }
 
     public Promise<T> getPromise() {
-        return promise;
+        return mPromise;
     }
 }

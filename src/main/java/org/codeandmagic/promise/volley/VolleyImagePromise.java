@@ -6,6 +6,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageLoader.ImageContainer;
+import com.android.volley.toolbox.ImageLoader.ImageListener;
 import com.android.volley.toolbox.ImageRequest;
 import org.codeandmagic.promise.Pipe;
 import org.codeandmagic.promise.Promise;
@@ -61,5 +64,25 @@ public class VolleyImagePromise {
                 return imagePromise(queue, url, maxWidth, maxHeight, decodeConfig);
             }
         };
+    }
+
+    public static Promise<ImageResult> imagePromise(ImageLoader imageLoader, final String url, int maxWidth, int maxHeight) {
+        final DeferredObject<ImageResult> promise = new DeferredObject<ImageResult>();
+
+        imageLoader.get(url, new ImageListener() {
+            @Override
+            public void onResponse(ImageContainer imageContainer, boolean isImmediate) {
+                if (imageContainer.getBitmap() != null) {
+                    promise.success(new ImageResult(imageContainer, isImmediate));
+                }
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                promise.failure(volleyError);
+            }
+        }, maxWidth, maxHeight);
+
+        return promise;
     }
 }

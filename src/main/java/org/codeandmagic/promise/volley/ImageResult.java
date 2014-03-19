@@ -17,27 +17,20 @@
  * along with android-promise. If not, see <http://www.gnu.org/licenses/>.
  */
 
-apply plugin: 'android-library'
+package org.codeandmagic.promise.volley;
 
-android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+import com.android.volley.toolbox.ImageLoader.ImageContainer;
 
-    defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
+/**
+ * Created by evelina on 18/03/2014.
+ */
+public class ImageResult {
+
+    public final ImageContainer imageContainer;
+    public final boolean fromCache;
+
+    public ImageResult(ImageContainer imageContainer, boolean fromCache) {
+        this.imageContainer = imageContainer;
+        this.fromCache = fromCache;
     }
-    release {
-        runProguard false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-    }
-}
-
-dependencies {
-    compile 'com.android.support:support-v4:+'
-    compile 'com.jakewharton:disklrucache:2.0.2'
-    compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    compile project(':core')
 }
